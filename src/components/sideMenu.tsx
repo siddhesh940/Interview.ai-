@@ -1,11 +1,35 @@
 "use client";
 
-import { Brain, Briefcase, FileCheck, FileText, Gamepad2, Mic, PlayCircle, Speech, Zap } from "lucide-react";
+import { Bell, Brain, Briefcase, FileCheck, FileText, Gamepad2, MapPin, Mic, PlayCircle, Speech, Zap } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 function SideMenu() {
   const pathname = usePathname();
   const router = useRouter();
+  const [unreadNotifications, setUnreadNotifications] = useState(0);
+
+  useEffect(() => {
+    // Fetch unread notification count
+    const fetchNotificationCount = async () => {
+      try {
+        const response = await fetch('/api/notifications?unread=true');
+        if (response.ok) {
+          const data = await response.json();
+          setUnreadNotifications(data.unreadCount || 0);
+        }
+      } catch (error) {
+        console.error('Failed to fetch notification count:', error);
+      }
+    };
+
+    fetchNotificationCount();
+    
+    // Poll for new notifications every 5 minutes
+    const interval = setInterval(fetchNotificationCount, 5 * 60 * 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="z-[10] bg-slate-100 p-6 w-72 fixed top-[64px] left-0 h-full">
@@ -101,6 +125,30 @@ function SideMenu() {
           >
             <Briefcase className="font-thin mr-2" />
             <p className="font-medium">Dream Company Station</p>
+          </div>
+
+          {/* ---- Placement Drives ---- */}
+          <div
+            className={`flex flex-row px-6 py-3 rounded-md hover:bg-slate-200 cursor-pointer relative ${
+              pathname.includes("/placement-drives")
+                ? "bg-indigo-200"
+                : "bg-slate-100"
+            }`}
+            onClick={() => router.push("/dashboard/placement-drives")}
+          >
+            <MapPin className="font-thin mr-2" />
+            <div className="flex flex-col flex-1">
+              <p className="font-medium">Placement Drives</p>
+              <p className="text-xs text-gray-500">Live Opportunities</p>
+            </div>
+            {unreadNotifications > 0 && (
+              <div className="flex items-center">
+                <Bell className="w-4 h-4 mr-1 text-orange-500" />
+                <span className="bg-orange-500 text-white text-xs rounded-full px-2 py-1 min-w-[20px] text-center">
+                  {unreadNotifications > 99 ? '99+' : unreadNotifications}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* ---- Resume Builder ---- */}
