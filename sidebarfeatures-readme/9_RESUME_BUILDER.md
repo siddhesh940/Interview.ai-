@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 📄 Resume Builder
 
 ### Create Professional ATS-Friendly Resumes
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-Resume-green?style=for-the-badge)]()
 [![Templates](https://img.shields.io/badge/Templates-5+-blue?style=for-the-badge)]()
 [![Export](https://img.shields.io/badge/Export-PDF-orange?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -465,11 +461,7 @@ Focus Order:
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

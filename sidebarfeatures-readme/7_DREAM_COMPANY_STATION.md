@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 🏢 Dream Company Station
 
 ### Company-Specific Interview Preparation
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-Companies-blue?style=for-the-badge)]()
 [![Companies](https://img.shields.io/badge/Companies-6-green?style=for-the-badge)]()
 [![Materials](https://img.shields.io/badge/Materials-100+-orange?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -361,11 +357,7 @@ Week 4: Interview Practice
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

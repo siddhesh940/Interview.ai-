@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 🤖 Skill Autofill
 
 ### AI-Powered Skill Detection & Resume Enhancement
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-AI-purple?style=for-the-badge)]()
 [![Skills](https://img.shields.io/badge/Skills-50+-blue?style=for-the-badge)]()
 [![Accuracy](https://img.shields.io/badge/Accuracy-95%25-green?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -404,11 +400,7 @@ Rate your skills honestly:
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

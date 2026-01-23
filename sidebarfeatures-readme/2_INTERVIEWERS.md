@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 👥 AI Interviewers
 
 ### Meet Your AI Interview Practice Partners
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-Core-red?style=for-the-badge)]()
 [![AI](https://img.shields.io/badge/Personas-2+-blue?style=for-the-badge)]()
 [![Customizable](https://img.shields.io/badge/Style-Customizable-green?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -325,11 +321,7 @@ DON'T:
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

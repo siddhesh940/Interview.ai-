@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 🧮 Aptitude Arena
 
 ### Master Quantitative, Verbal & Logical Reasoning
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-Practice-blue?style=for-the-badge)]()
 [![Questions](https://img.shields.io/badge/Questions-1000+-green?style=for-the-badge)]()
 [![Topics](https://img.shields.io/badge/Topics-22+-orange?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -361,11 +357,7 @@ Evening (20 mins):
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

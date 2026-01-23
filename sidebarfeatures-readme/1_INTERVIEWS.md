@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 🎯 AI-Powered Interviews
 
 ### Practice Mock Interviews with Advanced AI Technology
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-Core-red?style=for-the-badge)]()
 [![AI Powered](https://img.shields.io/badge/AI-Retell%20AI-purple?style=for-the-badge)]()
 [![Voice](https://img.shields.io/badge/Voice-Enabled-green?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -403,11 +399,7 @@ R - RESULT: Share the outcome (25%)
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

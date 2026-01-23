@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # ⏰ Time Machine
 
 ### AI-Powered Future Success Prediction
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-AI-purple?style=for-the-badge)]()
 [![Predictions](https://img.shields.io/badge/Predictions-30/60/90%20Days-blue?style=for-the-badge)]()
 [![Roadmap](https://img.shields.io/badge/Roadmap-Personalized-green?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -445,11 +441,7 @@ For more accurate predictions:
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

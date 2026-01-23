@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 📖 Interview Resource Hub
 
 ### Your Complete Library of Interview Preparation Materials
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-Resources-orange?style=for-the-badge)]()
 [![PDFs](https://img.shields.io/badge/PDFs-30+-blue?style=for-the-badge)]()
 [![Categories](https://img.shields.io/badge/Categories-6-green?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -295,11 +291,7 @@ Week 4: Review & Practice
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

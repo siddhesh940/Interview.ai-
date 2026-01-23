@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 💼 Placement Drives
 
 ### Live Job Opportunities & Eligibility Tracking
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-Jobs-green?style=for-the-badge)]()
 [![Companies](https://img.shields.io/badge/Companies-6-blue?style=for-the-badge)]()
 [![Auto-Update](https://img.shields.io/badge/Updates-Daily-orange?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -393,11 +389,7 @@ Before applying, ensure:
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

@@ -1,8 +1,6 @@
-<![CDATA[<div align="center">
-
 # 🎯 Interview.ai
 
-### *Your Complete AI-Powered Interview Preparation Platform*
+### Your Complete AI-Powered Interview Preparation Platform
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
@@ -15,9 +13,7 @@
 
 **Interview.ai** is a comprehensive, enterprise-grade interview preparation platform that combines AI-powered mock interviews, gamified learning, aptitude training, soft skills development, resume building, and placement tracking into one seamless experience.
 
-[🚀 Live Demo](#) • [📖 Documentation](#-table-of-contents) • [🤝 Contributing](CONTRIBUTING.md)
-
-</div>
+🚀 [Live Demo](#) • 📖 [Documentation](#-table-of-contents) • 🤝 [Contributing](CONTRIBUTING.md)
 
 ---
 
@@ -1745,11 +1741,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-<div align="center">
-
 ### Made with ❤️ by Siddhesh Patil
 
-**[⬆ Back to Top](#-interviewai)**
+[⬆ Back to Top](#-interviewai)
 
-</div>
-]]>

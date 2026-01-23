@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 🎓 Soft Skills Training
 
 ### Master Communication, Confidence & Body Language
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-Training-green?style=for-the-badge)]()
 [![Skills](https://img.shields.io/badge/Skills-5-blue?style=for-the-badge)]()
 [![Videos](https://img.shields.io/badge/Videos-15+-purple?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -442,11 +438,7 @@ Body Language:
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

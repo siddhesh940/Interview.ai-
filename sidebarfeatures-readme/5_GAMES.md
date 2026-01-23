@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 🎮 Interactive Games
 
 ### Learn Interview Skills Through Fun Challenges
@@ -7,8 +5,6 @@
 [![Feature](https://img.shields.io/badge/Feature-Games-purple?style=for-the-badge)]()
 [![Games](https://img.shields.io/badge/Games-6-blue?style=for-the-badge)]()
 [![Questions](https://img.shields.io/badge/Questions-500+-green?style=for-the-badge)]()
-
-</div>
 
 ---
 
@@ -495,11 +491,7 @@ Full Session (45 mins):
 
 ---
 
-<div align="center">
-
 **[⬆ Back to Index](README.md)**
 
 *Last Updated: January 2026*
 
-</div>
-]]>

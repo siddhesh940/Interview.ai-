@@ -1,5 +1,3 @@
-<![CDATA[<div align="center">
-
 # 📚 Interview.ai - Feature Documentation Hub
 
 ### Complete Documentation for All 11 Sidebar Features
@@ -9,8 +7,6 @@
 [![Last Updated](https://img.shields.io/badge/Updated-January%202026-orange?style=for-the-badge)]()
 
 ---
-
-</div>
 
 ## 🎯 Welcome
 
@@ -145,11 +141,7 @@ Want to improve this documentation? Check out our [CONTRIBUTING.md](../CONTRIBUT
 
 ---
 
-<div align="center">
-
 **Made with ❤️ for Interview.ai**
 
 *Last Updated: January 2026*
 
-</div>
-]]>
