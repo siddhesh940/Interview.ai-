@@ -1,5 +1,6 @@
 import { convertToLegacyFormat, deterministicParser } from '@/lib/pdf-parser-deterministic';
 import { NextRequest, NextResponse } from 'next/server';
+import Tesseract from 'tesseract.js';
 
 // ============================================================================
 // EXTRACTION CONFIDENCE CALCULATOR
@@ -14,30 +15,30 @@ interface ExtractionResult {
   extractionMethod: string | null;
 }
 
-function calculateExtractionConfidence(text: string, fileSize: number): number {
+function calculateExtractionConfidence(text: string, _fileSize: number): number {
   const charCount = text.trim().length;
   
   // HARD FAIL: No text extracted
-  if (charCount === 0) return 0;
-  if (charCount < 50) return 0.05;
-  if (charCount < 100) return 0.15;
-  if (charCount < 200) return 0.25;
+  if (charCount === 0) {return 0;}
+  if (charCount < 50) {return 0.05;}
+  if (charCount < 100) {return 0.15;}
+  if (charCount < 200) {return 0.25;}
   
   // Check for gibberish (CID fonts without Unicode mapping)
   const gibberishRatio = (text.match(/[^\x20-\x7E\n\u00A0-\u024F]/g) || []).length / charCount;
-  if (gibberishRatio > 0.4) return 0.1;
-  if (gibberishRatio > 0.25) return 0.3;
+  if (gibberishRatio > 0.4) {return 0.1;}
+  if (gibberishRatio > 0.25) {return 0.3;}
   
   // Check for resume keywords
   const keywordMatches = text.match(/experience|education|skills?|projects?|work|employment|summary|objective|certifications?/gi) || [];
   const hasKeywords = keywordMatches.length >= 2;
   
-  if (!hasKeywords && charCount < 500) return 0.35;
-  if (!hasKeywords) return 0.5;
+  if (!hasKeywords && charCount < 500) {return 0.35;}
+  if (!hasKeywords) {return 0.5;}
   
   // Good extraction
-  if (charCount >= 1000 && hasKeywords) return 0.9;
-  if (charCount >= 500 && hasKeywords) return 0.75;
+  if (charCount >= 1000 && hasKeywords) {return 0.9;}
+  if (charCount >= 500 && hasKeywords) {return 0.75;}
   
   return Math.min(0.85, 0.4 + (charCount / 2000));
 }
@@ -87,7 +88,8 @@ async function extractTextFromFile(file: File): Promise<ExtractionResult> {
       return await extractFromPDF(file, fileSize);
     } else if (file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
       const text = await extractFromDOCX(file);
-      return {
+      
+return {
         text,
         extractedChars: text.trim().length,
         fileSize,
@@ -98,7 +100,8 @@ async function extractTextFromFile(file: File): Promise<ExtractionResult> {
     } else {
       // Fallback for text-based files
       const text = await file.text();
-      return {
+      
+return {
         text,
         extractedChars: text.trim().length,
         fileSize,
@@ -109,7 +112,8 @@ async function extractTextFromFile(file: File): Promise<ExtractionResult> {
     }
   } catch (error) {
     console.error('❌ Text extraction failed:', error);
-    return {
+    
+return {
       text: '',
       extractedChars: 0,
       fileSize,
@@ -117,6 +121,45 @@ async function extractTextFromFile(file: File): Promise<ExtractionResult> {
       extractionConfidence: 0,
       extractionMethod: null
     };
+  }
+}
+
+// ============================================================================
+// OCR EXTRACTION USING TESSERACT.JS
+// ============================================================================
+
+async function extractTextWithOCR(pdfData: Uint8Array): Promise<string> {
+  console.log('🔄 Starting OCR extraction pipeline...');
+  
+  try {
+    // Tesseract.js v5+ can directly process PDF files
+    // We'll use the buffer directly with Tesseract
+    const pdfBuffer = Buffer.from(pdfData);
+    
+    console.log('🔍 Running Tesseract OCR on PDF buffer...');
+    
+    // Create a worker with English language
+    const worker = await Tesseract.createWorker('eng', 1, {
+      logger: (m: Tesseract.LoggerMessage) => {
+        if (m.status === 'recognizing text' && m.progress) {
+          console.log(`   OCR progress: ${Math.round(m.progress * 100)}%`);
+        }
+      }
+    });
+    
+    // Recognize text from PDF - Tesseract can handle PDF buffers
+    const result = await worker.recognize(pdfBuffer);
+    
+    await worker.terminate();
+    
+    const extractedText = result.data.text || '';
+    console.log(`✅ OCR completed: ${extractedText.length} characters (confidence: ${Math.round(result.data.confidence)}%)`);
+    
+    return extractedText.trim();
+    
+  } catch (error) {
+    console.error('❌ OCR extraction failed:', error);
+    throw error;
   }
 }
 
@@ -221,7 +264,7 @@ async function extractFromPDF(file: File, fileSize: number): Promise<ExtractionR
   if (bestText.trim().length < 100) {
     try {
       console.log('📖 Attempting pdf-parse extraction...');
-      const pdfParse = (await import('pdf-parse/lib/pdf-parse.js')).default;
+      const pdfParse = (await import('pdf-parse')).default;
       
       // Custom render function to better extract text
       const options = {
@@ -231,7 +274,8 @@ async function extractFromPDF(file: File, fileSize: number): Promise<ExtractionR
             for (const item of textContent.items) {
               text += item.str + ' ';
             }
-            return text;
+            
+return text;
           });
         }
       };
@@ -267,7 +311,7 @@ async function extractFromPDF(file: File, fileSize: number): Promise<ExtractionR
         if (tjMatches) {
           for (const tj of tjMatches) {
             const text = tj.match(/\(([^)]*)\)/);
-            if (text) streamText += text[1] + ' ';
+            if (text) {streamText += text[1] + ' ';}
           }
         }
         
@@ -305,6 +349,23 @@ async function extractFromPDF(file: File, fileSize: number): Promise<ExtractionR
     } catch (error) {
       console.warn('⚠️ Raw extraction failed:', error);
       errors.push(`raw: ${error instanceof Error ? error.message : 'Unknown'}`);
+    }
+  }
+
+  // Method 5: OCR with Tesseract.js (for vectorized/image-based PDFs)
+  if (bestText.trim().length < 50) {
+    try {
+      console.log('📖 Attempting OCR extraction with Tesseract.js...');
+      const ocrText = await extractTextWithOCR(uint8Array);
+      
+      if (ocrText.trim().length > bestText.trim().length) {
+        bestText = ocrText;
+        extractionMethod = 'tesseract-ocr';
+        console.log(`✅ OCR extracted ${bestText.length} characters`);
+      }
+    } catch (error: any) {
+      console.warn('⚠️ OCR extraction failed:', error?.message || error);
+      errors.push(`ocr: ${error instanceof Error ? error.message : 'Unknown'}`);
     }
   }
 
@@ -471,7 +532,8 @@ export async function POST(request: NextRequest) {
     // =========================================================================
     if (extractionResult.extractedChars < 50) {
       console.log(`🚫 NON-EXTRACTABLE PDF detected: ${extractionResult.extractedChars} chars from ${extractionResult.fileSize} bytes`);
-      return createNonExtractableResponse(extractionResult.extractedChars, extractionResult.fileSize);
+      
+return createNonExtractableResponse(extractionResult.extractedChars, extractionResult.fileSize);
     }
     
     console.log(`📄 Extracted text: ${extractionResult.extractedChars} characters`);
